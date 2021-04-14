@@ -1,0 +1,5 @@
+"0","weights <- map_to_weighting(sampling.frame = sampling_frame_final,"
+"0","                            data.stratum.column = ""strata"", # la colonne strata pour joigner cote des donnees"
+"0","                            sampling.frame.population.column = ""population"", # colonne avec population dans l'echantillon"
+"0","                            sampling.frame.stratum.column = ""strata""  # la colonne strata pour joigner cote d'echantillon"
+"0","                            )"

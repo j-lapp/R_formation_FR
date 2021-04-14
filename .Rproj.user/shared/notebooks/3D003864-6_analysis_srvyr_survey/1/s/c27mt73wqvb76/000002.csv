@@ -1,0 +1,6 @@
+"0","sampling_frame <- read.csv(""input/echantillon/REACH_BFA_Pop_for_weighting_20201308.csv"", na.strings = c(""NA"", """", ""N/A""), fileEncoding=""UTF-8-BOM"") %>% "
+"0","  group_by(admin1) %>% "
+"0","  summarize(population = sum(Total.local)) %>% "
+"0","  mutate(admin1 = paste0(gsub("" |-"", ""_"", tolower(admin1)), ""_pop_local"")) %>% "
+"0","  rename(strata = admin1)"
+"0",""

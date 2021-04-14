@@ -1,0 +1,2 @@
+"0","design_srvyr <- data %>% "
+"0","  as_survey_design(ids = 1, strata = strata, fpc = population)"

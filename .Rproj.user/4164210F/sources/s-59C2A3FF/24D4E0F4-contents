@@ -1,0 +1,379 @@
+
+## 4. Géospatiale
+### 4. R Géospatiale: sf et leaflet
+#### R pour applications geoespaciales
+
+***
+
+#### Liens clés
+
+[Geocomputation avec R](https://geocompr.robinlovelace.net/) <br>
+
+[R leaflet](https://rstudio.github.io/leaflet/) <br>
+
+[Formation complémentaire en français](https://thinkr.fr/cartographie-interactive-comment-visualiser-mes-donnees-spatiales-de-maniere-dynamique-avec-leaflet/) <br>
+
+***
+
+Installez et importez les packages pour ce module
+```{r include=F}
+library(dplyr)
+library(sf)
+library(leaflet)
+library(raster)
+library(rmapshaper)
+library(spatialEco)
+
+```
+
+```{r eval=F, echo=T, warning=FALSE, error=FALSE, message=FALSE}
+library(dplyr)
+library(sf)
+library(leaflet)
+library(raster)
+library(rmapshaper)
+library(spatialEco)
+
+```
+
+```{r eval=T, include=F}
+source("R/LEAFLET.R")
+```
+
+***
+
+### "sf"
+#### Objets sf (simple features)
+**sf** est un package fournissant un système de classes pour les données vectorielles géographiques. Il est récemment devenu le fondement de l'analyse spatiale chez R.
+- sf peut représenter tous les types de géométrie vectorielle courants: points, lignes, polygones et leurs versions «multi» respectives.
+
+**st_read:** chargement de données vectorielles dans R (shp, geojson, kml etc). <br>
+**st_as_sf:** casting comme objet sf dans R (csv, excel)
+
+Lisez donnees avec la fonction sf, "st_read". Comme argument, on define aussi le CRS (4326 est WGS84).
+```{r eval=F, echo=T, warning=F}
+
+bfa_admin1 <- st_read("donnees/spatiale/bfa_admin1.geojson", crs= 4326)
+bfa_admin2 <- st_read("donnees/spatiale/bfa_admin2.geojson")
+
+```
+
+#### Exercise
+- Lisez le admin2 et aussi les chemins trunk.
+
+***
+
+Avant de faire les cartes on va creer quelques variables de couleur REACH pour faciliter la creation de les styles:
+```{r echo=T, eval=F, warning=F, message=F }
+# couleurs REACH
+reach_rouge         <- "#EE5859"
+reach_rose          <- "#f5a6a7"
+reach_orange        <- "#F69E61"
+reach_gris          <- "#58585A"
+reach_lt_gris       <- "#D1D3D4"
+reach_palette_rouge <- c('#FEF2F2','#EE5859', '#772B2C')
+blanc               <-  "#FFFFFF"
+
+```
+
+***
+
+### sf plot (Base R)
+
+Nous pouvons utiliser la fonction **plot** pour afficher des données spatiales avec sf:
+```{r eval=T, echo=T,  warning=F}
+plot(bfa_admin1)
+
+```
+
+On peut voir que le résultat ici rend un nouveau tracé pour chaque attribut. Aucun de ces autres attributs n'a de sens pour tracer de cette manière, car nous voulons simplement tracer la géométrie de la couche.
+
+Comme dans un dataframe, nous pouvons accéder à des attributs individuels avec l'opérateur '$', y compris la géométrie. Avec l'argument "col" on define la couleur. Maintenant on fait ca:
+```{r eval=T, echo=T, warning=F}
+plot(bfa_admin1$geometry, col= reach_lt_gris)
+
+```
+
+### Adjouter couches
+Nous transmettons des options supplémentaires pour une fonction spécifique comme **arguments**.
+pour ajouter une couche à la carte: utilisez l'argument **add = T**.
+couleur (col) et largeur de ligne (lwd) sont 2 autres arguments que nous pouvons ajouter:
+```{r eval=F, echo=T, results='asis', warning=F}
+
+# ajouter le couche de chemins
+bfa_chemin_trunk <- st_read("donnees/spatiale/Trunk.shp")
+```
+
+```{r eval=T, echo=T, results='asis', warning=F}
+plot(bfa_admin1$geometry, col= reach_lt_gris)
+
+plot(bfa_chemin_trunk$geometry, add = T, col= "brown", lwd = 0.5)
+```
+
+#### Exercise
+- Faisez un plot avec 2 couches
+
+***
+
+Nous pouvons utiliser des conditions comme ifelse ou case_when pour mettre en évidence une région:
+```{r eval=T, echo=T, results='asis', warning=F}
+plot(bfa_admin1$geometry, col = ifelse(bfa_admin1$ADM1_FR == "Est", reach_rouge, reach_lt_gris))
+```
+
+### Leaflet
+
+Leaflet est la principale bibliothèque JavaScript open source pour les cartes interactives adaptées aux mobiles. A ete adaptee comme une packages R aussi.
+
+Appelez la fonction de **leaflet()** et assignez-le un nom. Ajoutez un pipe (%>%) pour chaque nouvelle couche.
+
+Les options de propriété de style sont similaires au sty+le Web et peuvent être vues en entrant? addPolygons dans la console.
+
+L'ordre dans lequel les couches sont appelées dans la fonction est l'ordre dans lequel elles apparaissent sur la carte. Par conséquent, le calque appelé dernier apparaîtra en haut.
+
+```{r eval=T, echo=T, results='asis', warning=F}
+
+bfa_leaflet_map <-  leaflet() %>% 
+  addPolygons(
+              data        = bfa_admin2, # donnees de couche admin1
+              color       = reach_gris, # couleur des frontieres
+              fillColor   =  reach_lt_gris, # couleur de remplissage
+              weight      = 0.3, # largeur des frontieres
+              opacity     = 1.0,  # opacite
+              fillOpacity = 0.8,
+              label       = bfa_admin2$ADM2_FR,
+              highlightOptions = highlightOptions(fillColor="white",
+                                   color="white",
+                                   weight = 1.4,
+                                   bringToFront = F)
+              ) 
+
+# affichez la carte
+bfa_leaflet_map
+```
+
+
+nous voulons maintenant ajouter des limites et des étiquettes de region. d'abord on fait une conversion de polygon a ligne pour afficher le frontieres de region. 
+```{r eval=F, echo=T, warning=F}
+# autre maniere de faire des lignes admin1 c'est avec un dissolve de admin2. il viens du package rmapshaper
+bfa_admin1_dissolve <- rmapshaper::ms_dissolve(bfa_admin2, field="ADM1_FR")
+
+# convert gov boundaries to lines to display on map so they do not clash with district interactivity
+bfa_admin1_lignes <- st_cast(bfa_admin1_dissolve,"MULTILINESTRING")
+bfa_admin1_lignes <- st_cast(bfa_admin1_lignes,"LINESTRING")
+```
+
+
+Ces frontieres vont avoir plus largeur. Ces deux couches sont ajoutés en séquence avec le pipe (%>%):
+```{r eval=T, echo=T, results='asis', warning=F}
+bfa_leaflet_map <-  leaflet() %>% 
+  addPolygons(
+              data        = bfa_admin2, # donnees de couche admin1
+              color       = reach_gris, # couleur des frontieres
+              fillColor   =  reach_lt_gris, # couleur de remplissage
+              weight      = 0.3, # largeur des frontieres
+              opacity     = 1.0,  # opacite
+              fillOpacity = 0.8,
+              label       = bfa_admin2$ADM2_FR,
+              highlightOptions = highlightOptions(fillColor="white",
+                                   color="white",
+                                   weight = 1.4,
+                                   bringToFront = F)
+              ) %>% 
+    addPolylines(
+               data    = bfa_admin1_lignes,
+               color   = "black",
+               weight  = 0.8,
+               opacity = 0.8) 
+
+# affichez la carte
+bfa_leaflet_map
+```
+
+***
+
+### Étiquetage avec leaflet
+créer des centroids de polygones pour les regions avec la fonction sf "st_centroid" afin de créer des étiquettes:
+```{r eval=T, echo=T, warning=F}
+
+# prends le controid de couche de admin1
+bfa_admin1_centroid <- st_centroid(bfa_admin1)
+
+# vérifier que le type de géométrie est un point
+st_geometry_type(bfa_admin1_centroid, by_geometry = F)
+```
+
+Plot une nouvelle carte avec des étiquettes de région à l'aide de **'addLabelOnlyMarkers'**.
+```{r eval=T, echo=T, warning=F}
+bfa_leaflet_map <-  leaflet() %>% 
+  addPolygons(
+              data        = bfa_admin2, # donnees de couche admin1
+              color       = reach_gris, # couleur des frontieres
+              fillColor   =  reach_lt_gris, # couleur de remplissage
+              weight      = 0.3, # largeur des frontieres
+              opacity     = 1.0,  # opacite
+              fillOpacity = 0.8,
+              label       = bfa_admin2$ADM2_FR,
+              highlightOptions = highlightOptions(fillColor="white",
+                                   color="white",
+                                   weight = 1.4,
+                                   bringToFront = F)
+              ) %>% 
+    addPolylines(
+               data    = bfa_admin1_lignes,
+               color   = "black",
+               weight  = 0.8,
+               opacity = 0.8) %>% 
+    addLabelOnlyMarkers(
+               data  = bfa_admin1_centroid,
+               label = bfa_admin1_centroid$ADM1_FR, # c'est l'atribut utilisee pour creer des etiquetes
+               labelOptions = labelOptions(noHide = T,
+                            direction = 'center',
+                            textOnly = T)) 
+
+# affichez la carte
+bfa_leaflet_map
+```
+
+
+#### Exercise
+- Avec cette carte au dessus faire une déclaration de ifelse pour souligner une region avec une autre couleur.
+
+***
+
+### Donnees points avec sf
+Lisez les donnees SETTLEMENTS_3F_BFA_20200505.xlsx. Pour convertir a un objet spatial on utilise la fonction sf **"st_as_sf"**:
+```{r eval=F, echo=T,  warning=F}
+bfa_villages <- readxl::read_xlsx("donnees/tableaux/SETTLEMENTS_3F_BFA_20200505.xlsx", sheet = "SETTLEMENTS_3F")
+```
+
+Inspectez les donnees des villages pour voire les champs des latitude et longitude.
+```{r eval=F, echo=T,  warning=F}
+
+# convert to sf object and define coordinate columns in order to plot in leaflet
+bfa_villages <- bfa_villages %>%
+  st_as_sf(
+    coords = c("POINT_X", "POINT_Y"), # choose lat and long columns in table 
+    crs = 4326)
+
+region_a_filtrer <- "Sahel"
+
+bfa_admin1_filtree <- bfa_admin1 %>% 
+  filter(ADM1_FR == region_a_filtrer)
+
+villages_filtree <-  st_intersection(bfa_villages, bfa_admin1_filtree)
+```
+
+Ajoutez les points a la carte leaflet avec la fonction **"addCircleMarkers"**
+```{r eval=T, echo=T, results='asis', warning=F}
+bfa_leaflet_map <-  leaflet() %>% 
+  addPolygons(
+              data        = bfa_admin2, # donnees de couche admin1
+              color       = reach_gris, # couleur des frontieres
+              fillColor   =  reach_lt_gris, # couleur de remplissage
+              weight      = 0.3, # largeur des frontieres
+              opacity     = 1.0,  # opacite
+              fillOpacity = 0.8,
+              label       = bfa_admin2$ADM2_FR,
+              highlightOptions = highlightOptions(fillColor="white",
+                                   color="white",
+                                   weight = 1.4,
+                                   bringToFront = F)
+              ) %>% 
+    addPolylines(
+               data    = bfa_admin1_lignes,
+               color   = "black",
+               weight  = 0.8,
+               opacity = 0.8) %>% 
+    # ajoutez points a la carte
+  addCircleMarkers( 
+               data = villages_filtree, 
+               color = reach_orange,
+               fillColor = reach_orange,
+               radius=1,
+               weight=0.2,
+               fillOpacity = 0.8,
+               popup = bfa_villages$NomLocalit) %>% 
+    addLabelOnlyMarkers(
+               data  = bfa_admin1_centroid,
+               label = bfa_admin1_centroid$ADM1_FR, # c'est l'atribut utilisee pour creer des etiquetes
+               labelOptions = labelOptions(noHide = T,
+                            direction = 'center',
+                            textOnly = T)) 
+
+# affichez la carte
+bfa_leaflet_map
+```
+
+***
+
+### zonal statistics et cartes choropleths 
+
+[Telechargez les donnees de population BF de facebook](https://data.humdata.org/dataset/highresolutionpopulationdensitymaps-bfa)
+
+Importez les donnees avec le package raster
+```{r eval=F, echo=T, warning=F}
+pop_bfa_2018 <- raster::raster("donnees/spatiale/population_bfa_2018-10-01.tif")
+```
+
+
+Maintenant on peut calculer la population des provinces de Burkina et afficher sure une carte leaflet. Pour calculer les statistiques zonales on va utiliser le package "spatialEco".
+```{r eval=F, echo=T,  warning=F}
+pop_2018 <- spatialEco::zonal.stats(bfa_admin2, pop_bfa_2018, stats = "sum")
+
+# faire un bind pour mettre les statistiques dans les donnees admin2
+bfa_admin2 <- cbind(bfa_admin2, pop_2018) %>% 
+  dplyr::rename(pop_2018 = sum.population_bfa_2018.10.01)
+```
+
+Finalment on fait la carte de population et define l'etiquette comme un palette REACH.
+```{r eval=T, echo=T,  warning=F}
+pal_population <- colorNumeric(
+  palette = colorRampPalette(reach_palette_rouge)(length(bfa_admin2$pop_2018)), 
+  domain = bfa_admin2$pop_2018, na.color = reach_lt_gris)
+
+carte_bfa_leaflet_choropleth <-  leaflet() %>% 
+  addPolygons(
+    data        = bfa_admin2, # donnees de couche admin1
+    color       = reach_gris, # couleur des frontieres
+    fillColor   =  ~pal_population(pop_2018),  # couleur de remplissage
+    weight      = 0.3, # largeur des frontieres
+    opacity     = 1.0,  # opacite
+    fillOpacity = 0.8,
+    label       = paste0(bfa_admin2$ADM2_FR, "- Population: ", formatC(bfa_admin2$pop_2018,format="f", big.mark=",", digits=0)), 
+    highlightOptions = highlightOptions(fillColor = reach_gris,
+                                        color     = reach_gris,
+                                        weight    = 1.4,
+                                        bringToFront = F)
+  ) %>% 
+  addPolylines(
+    data    = bfa_admin1_lignes,
+    color   = "black",
+    weight  = 0.8,
+    opacity = 0.8) %>% 
+  addLabelOnlyMarkers(
+    data  = bfa_admin1_centroid,
+    label = bfa_admin1_centroid$ADM1_FR, # c'est l'atribut utilisee pour creer des etiquetes
+    labelOptions = labelOptions(noHide    = T,
+                                direction = 'center',
+                                textOnly  = T,
+                                style     = list(
+                                  "padding"     = "3px 8px",
+                                  "font-family" = "Arial",
+                                  "text-shadow" = sprintf("-1px 0 %s, 0 1px %s, 1px 0 %s, 0 -1px %s, 0 0 7px %s", blanc, blanc, blanc, blanc, blanc)
+                                )) 
+  )%>% 
+  
+  # ajoutez legende gradient
+  leaflet::addLegend(position  = "bottomright",
+                     pal       = pal_population,
+                     values    = bfa_admin2$pop_2018,
+                     title   = "Population",
+                     bins    = 5,
+                     opacity = 1) %>%
+  # ajoutez echelle
+  addScaleBar(position = "bottomleft", 
+              scaleBarOptions(imperial = FALSE))
+
+# affichez la carte
+carte_bfa_leaflet_choropleth
+```

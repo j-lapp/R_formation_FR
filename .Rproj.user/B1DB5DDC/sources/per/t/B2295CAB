@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1615886665141.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "721938293",
+    "id" : "B2295CAB",
+    "lastKnownWriteTime" : 1616165341,
+    "last_content_update" : 1616165341827,
+    "path" : "C:/Users/jarod/Desktop/R/base_R _training_FR/1_baseR.Rmd",
+    "project_path" : "1_baseR.Rmd",
+    "properties" : {
+        "cursorPosition" : "585,22",
+        "scrollLine" : "570",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

@@ -1,0 +1,1 @@
+"0","design_survey <- svydesign(data = data, id =~1, strata = ~strata, fpc = ~population)"

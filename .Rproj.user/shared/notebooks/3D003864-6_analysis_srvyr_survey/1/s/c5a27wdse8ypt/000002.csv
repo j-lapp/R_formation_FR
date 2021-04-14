@@ -1,0 +1,1 @@
+"0","assessment_data$strata <- paste0(assessment_data$admin1, ""_"", assessment_data$group_pop) "

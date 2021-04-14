@@ -1,0 +1,457 @@
+
+## 1. Base 
+### 1. Opérateurs et fonctions Base R
+
+***
+
+#### Liens clés
+
+[Introduction_programmation_R](https://cran.r-project.org/doc/contrib/Goulet_introduction_programmation_R.pdf) <br>    
+
+
+***
+
+#### Pour quoi utiliser langage R
+
+<span style="line-height:1.8;">R est un environnement puissant et extensible. Il dispose d'un large éventail de statistiques et de capacités d'analyse et de visualisation de données </span>
+
+- langage basé sur la notion de vecteur, ce qui simplifie les calculs mathématiques 
+- Manipulation, calcul et stockage des données
+- Tres puissant avec les graphiques, cartographie, analisis
+- Open source avec une grande communauté
+- C'est gratuit
+
+```{r eval=T, echo=F, warning=FALSE, error=FALSE, message=FALSE}
+library(dplyr)
+```
+
+***
+
+### Projets R
+
+Le plus efficace maniere de travailler avec R est en utilisant les dossiers de projets. Ca permet: 
+
+- définit automatiquement le répertoire de travail sur le dossier racine du projet
+- chemins d'accès faciles aux fichiers (chemins relatifs)
+- facilitez l'organization et le partage de projets et code.
+
+#### Exercise
+1. Ouvrez RStudio et creer un nouveau project/dossier qui s'appelle "Formation_BF".
+2. Dans ce dossier creer un autre dossier qui s'appelle 'donnees'. Ajouter les données d'evaluation HSM et du MSNA 2020 dans ce dossier.
+3. Dans le projet ouvrez un nouveau script R (ctrl + shift + N)
+
+***
+
+### Types/Modes de données
+```{r echo=FALSE, warning=F}
+library(reactable)
+modes <- NULL
+
+modes$Mode <- c("numeric", "complex", "logical","character", "function", "list")
+
+modes$Contenu <- c("nombres réels", "nombres complexes", "valeurs booléennes (vrai/faux)","chaînes de caractères / strings", "fonction", "données quelconques")
+
+modes$Examples <- c("34, 2.03, -10,000", "i, -i", "TRUE, FALSE", '"Paris", "Ouagadougou", "Montreal"', "function (x) {x*2}", "[1,2,4], 'hello', -49.3222")
+
+reactable(data.frame(modes), 
+          defaultColDef = colDef(
+    cell = function(value) format(value, nsmall = 1),
+    align = "center",
+    minWidth = 100,
+    headerStyle = list(color= "white", background = "#58585A")
+  ),  
+  columns = list(
+    Contenu = colDef(minWidth = 200),
+    Examples = colDef(
+      minWidth = 300,
+    style = function(value) {
+      if (length(value) > 0) {
+        color <- "#EE5859"
+      } 
+      list(color = color)
+    }
+  )
+  ),  
+  fullWidth = FALSE,
+  bordered = TRUE,
+  outlined= FALSE,
+  highlight = TRUE)
+```
+
+***
+
+### L'opérateur d'assignation
+Pour conserver le résultat d’une opération, on peut le stocker dans un objet à l’aide de ***l’opérateur d’assignation <-.*** Cette “flèche” stocke ce qu’il y a à sa droite dans un objet dont le nom est indiqué à sa gauche.
+
+```{r echo=TRUE}
+x <- 8
+x
+
+y <- x + 6
+y
+
+capitale <- "Ouagadougou"
+capitale
+```
+
+***
+
+### Autres opérateurs importants
+operateurs mathematiques
+```{r echo=FALSE, warning=F}
+library(reactable)
+modes <- NULL
+
+modes$operateur <- c("+", "-", "*","/", "%%")
+
+modes$description <- c("addition", "subtraction", "multiplication","division", "modulus (reste de)")
+
+
+reactable(data.frame(modes), 
+          defaultColDef = colDef(
+    cell = function(value) format(value, nsmall = 1),
+    align = "center",
+    minWidth = 100,
+    headerStyle = list(color= "white", background = "#58585A")
+  ),  
+  columns = list(
+    description = colDef(minWidth = 200)
+  ),  
+  fullWidth = FALSE,
+  bordered = TRUE,
+  outlined= FALSE,
+  highlight = TRUE)
+```
+
+operateurs relationnel
+```{r echo=FALSE, warning=F}
+library(reactable)
+modes <- NULL
+
+modes$operateur <- c("==","!=", "<", ">", "<=",">=")
+
+modes$description <- c("égal à", "inégal à", "moins de","plus de", "moins ou égal à", "plus ou égal à")
+
+
+reactable(data.frame(modes), 
+          defaultColDef = colDef(
+    cell = function(value) format(value, nsmall = 1),
+    align = "center",
+    minWidth = 100,
+    headerStyle = list(color= "white", background = "#58585A")
+  ),  
+  columns = list(
+    description = colDef(minWidth = 200)
+  ),  
+  fullWidth = FALSE,
+  bordered = TRUE,
+  outlined= FALSE,
+  highlight = TRUE)
+```
+
+
+#### Exercise
+1. Utilisez l'opérateur d'assignation pour assigner valeurs numeriques a une variable x et une variable y. 
+2. Essayez faire quelques testes avec les operateurs relationnel
+
+***
+
+### Vecteurs
+
+- Un vecteur est un ensemble d’éléments, tous du même  type.
+- Vecteurs sont les blocs de construction de langage R
+- Une collection de vecteurs peut être défini avec the fonction "c"
+
+Examples comment on peut construir un vecteur manuellement:
+
+```{r echo=TRUE}
+regions <- c("Centre", "Est" , "Nord", "Sahel")
+nombres <- 1:8
+regions
+```
+
+
+On peut acceder une variable dans un vecteur avec "[ ]":
+```{r echo=TRUE}
+regions[2]
+```
+
+
+operateurs logiques
+```{r echo=FALSE, warning=F}
+op_logiques <- tribble(~operateur, ~description,
+                 "!", "NOT logique",
+                 "&", "ET logique de element",
+                 "&&", "ET logique",
+                 "|", "OU logique de element",
+                 "||", "OU logique")
+
+source("R/functions.R")
+
+clean_table(op_logiques, 200)
+```
+
+***
+
+### Structures de données - Data Frame
+
+ Un data frame est une liste de classe "data.frame" dont tous les éléments sont de la même longueur (ou comptent le même nombre de lignes si les éléments sont des matrices).
+
+Il est généralement représenté sous la forme d’un tableau à deux dimensions. Chaque élément de la liste sous-jacente correspond à une colonne.
+
+On crée un data frame avec la fonction data.frame ou, pour convertir un
+autre type d’objet en data frame, avec as.data.frame.
+
+- columns: variables 
+**accédé avec le signe $ dans le format "tableau$variable"**
+- Aussi les variables peut etre accédé avec la notation tableau[[1]]
+- rows: lignes / observations
+
+***
+
+### Importer csv
+- On utilise le fonction 'read.csv' pour importer un csv. Dans un projet R il faut que mettre le chemin relatif des données.
+- Normalment les donnees se convertit en format data frame avec read.csv
+- C'est advisable que les noms de colonnes sont en format 'kobo name' avant de importer
+- Aussi, quand on importe donnee dans format csv, c'est tres important definer les 
+veleurs NA potentielles avec l'argument "na.strings". Ca reduit des problemes a l'avenir.
+
+```{r echo=TRUE}
+hsm_df <- read.csv("donnees/tableaux/REG1903b_3_Frontiers_HSM_Burkina_Faso_2021-03-16.csv", 
+                   na.strings = c("NA", "", "N/A", "N.A.", "NnA"),
+                   encoding = "UTF-8")
+```
+
+Pour acceder las variables on utilise $ ou [[ ]]
+```{r echo=T, eval=FALSE}
+hsm_df$ic_genre
+```
+
+est égal à
+
+```{r echo=T, eval=FALSE}
+hsm_df[[13]]
+```
+
+#### Exercise
+
+1. Importez le tableau de données d'evaluation HSM en utilisant la fonction read.csv() et appelez-le un nom pertinant avec l'opérateur d'assignation.
+2. Inspectez les variables avec l'operateur $
+
+***
+
+### Foncions de Base R: Inspections de données
+
+- **str()**: detalles compact du contenu des données
+- **class()**: le type de données de la variable.
+- **head()**: les entrées de début de la variable
+- **tail()**: les entrées du fin de la variable
+
+- **dim()**: dimensions des tableaux (n colonnes et n observations)
+- **nrow()**: nombre de observations des tableaux
+- **ncol()**: nombre de colonnes des tableaux
+
+- **length()**: retourne le nombre d'éléments dans un vecteur ou un facteur
+
+### Foncions de Base R: Convertir entre differents types de données
+
+- **as.numeric()**: convertit en un format numérique
+- **as.character()**: convertit en un format de caractère
+
+#### Exercise
+
+1. Inspectez les donnees HSM avec les fonctiones au dessus.
+2. Utilisez le $ pour faire ces operations avec une seule variable.
+
+***
+
+### Foncions de Base R: fonction 'table'
+La fonction table nous permet croisser variables facilment dans le console. C'est tres utile pour des analisis rapides et pour identifiquer valeurs NA.
+
+```{r echo=TRUE}
+table(hsm_df$ic_genre)
+```
+
+Et pour comparer deux variables:
+```{r echo=T}
+table(hsm_df$ic_genre, hsm_df$admin1)
+```
+
+On peut aussi assigner un tabl
+
+#### Exercise
+
+1. Utilisez la fonction table pour comparer multi variables avec les donnees HSM.
+
+***
+
+### Fonctions de Base R - statistiques descriptives
+Les rubriques d’aide des diverses fonctions de R contiennent une foule
+d’informations ainsi que des exemples d’utilisation. Leur consultation est
+tout à fait essentielle. Pour consulter 
+
+
+- **min()**: retourne la variable moins grand (variables de caractères aussi)
+- **max()**: retourne la variable plus grand 
+
+- **mean()**: retourne la moyenne de une ensemble de valeurs
+- **median()**: retourne la medianne de une ensemble de valeurs
+
+- **range()**: vecteur contenant le minimum et le maximum d’un vecteur
+- **quantile()**: quantiles empiriques
+
+- **summary()**: statistiques descriptives d’un échantillon
+
+```{r echo=TRUE}
+summary(hsm_df$ic_age)
+```
+
+#### Exercise
+
+1. Investiger les donnees dans les manieres au dessous.
+
+Fonctions de Base R
+- **is.na()** et **!is.na()** - permet identifier si une variable est NA ou non.
+ 
+ 
+```{r echo=TRUE}
+table(is.na(hsm_df$pdi_temps_arrivee))
+```
+
+#### Exercise
+
+1. Utilisez la fonction 'is.na()' ensemble avec la fonction table.
+
+***
+
+### Fonctions de Base R: Subset
+
+**Dans R, la commande «subset» est utilisée pour filtrer les données dans une trame de données en fonction des critères que vous avez définis.** 
+
+Lorsque nous sous-ensembles de données, il est recommandé de les affecter à un _nouveau objet / cadre de données_ afin que les données ne soient pas perdues.
+
+La fonction de subset prend la forme suivante:
+```{r echo=T, eval=F}
+subset_df <- subset(hsm_df, criteria)
+```
+Où les critères se réfèrent à une variable _numérique_ ou _catégorique_. Les critères de variables catégorielles apparaissent toujours entre guillemets.
+
+Exemples:
+
+**Variables numériques**
+```{r echo=T, eval=F}
+subset_df <- subset(hsm_df, ic_age>=30) 
+```
+
+**Variables catégorielles**
+```{r echo=T, eval=F}
+subset_df <- subset(hsm_df, admin1=="Est")
+```
+
+#### Exercise
+
+1. Effectuez 3 subsets de votre hsm données, en attribuant chacun à une nouvelle trame de données.
+
+Au moins un de ces sous-ensembles doit être d'une variable catégorielle (c'est-à-dire tous «hommes») et au moins un doit être d'une variable numérique (c'est-à-dire plus ou moins d'un nombre)
+
+***
+
+### Comparison entre variables
+
+On peut utiliser cette format en dessous de pour faire une comparaison entre deux variables, isoler une réponse d'une.
+
+```{r echo=TRUE}
+mean(hsm_df$ic_age[hsm_df$admin1 == "Est"])
+```
+
+
+### Fonctions de Base R - recherche d’éléments
+####  %in%
+L'opérateur %in% c'est tres utile. Il teste si une valeur fait partie des elements dun vecteur. Nous permet ecrire moins code. C'est particulairment utile pour faire le recodage d'un analisis avec questions multi en kobo.
+
+```{r echo=TRUE}
+regions %in% c("Est", "Nord")
+```
+
+est égal à
+
+```{r echo=TRUE}
+regions == "Est" | regions == "Nord"
+```
+
+***
+
+### Fonctions de Base R - Autres Fonctions Utiles
+- round(): arrondit un nombre décimal
+Par example ce code va arrondir le nombre a juste un décimal:
+  
+```{r echo=TRUE}
+round(102.47333, 1) 
+```
+
+
+- duplicated(): identifier les valeurs en double 
+- unique(): extraction des éléments différents d’un vecteur
+
+- which():  positions des valeurs TRUE dans un vecteur booléen
+
+
+### grep
+
+Grep nous permet chercher dans donnees particulaires pour modèles spécifiques.
+
+Par example ici on peut chercher pour "autre" apres de un "." dans les noms de colonnes des donnees HSM.
+```{r eval=TRUE, echo=T, results='asis', warning=F, message = F}
+# numeros des colonnes
+noms_autres <- grep("[.]autre", names(hsm_df))
+noms_autres
+
+# noms des colonnes
+noms_autre <- names(hsm_df)[grep(".[.]autre", names(hsm_df))]
+noms_autre
+
+```
+
+
+
+### gsub
+
+**gsub** nous permet remplacer carateres facilment dans les donnees. Il utilise le syntaxe de 
+
+Pour nous permetir sorter et ordonner le tableau on peut utiliser le fonction "as.datatable" ensemble avec "formattable".
+```{r eval=FALSE, echo=T, results='asis', warning=F, message = F}
+names(data)<-gsub("\\/",".",names(data)) 
+
+```
+
+gsub et grep utilise les modeles qui viennent des expresiones regulaires.
+
+[Expresiones Regulaires (Regex) sommaire](https://docs.microsoft.com/fr-fr/dotnet/standard/base-types/regular-expression-language-quick-reference)
+<br>
+[Site pour tester les Regex](https://docs.microsoft.com/fr-fr/dotnet/standard/base-types/regular-expression-language-quick-reference)
+
+
+### Fonctions Apply
+
+La famille des fonctions apply nous permet apliquer n'importe quelle fonction a un structure de données.
+
+apply(X, MARGIN, FUN, ...)
+
+MARGIN est une variable définissant comment la fonction est appliquée: lorsque MARGIN = 1, elle s'applique sur les lignes, alors qu'avec MARGIN = 2, cela fonctionne sur les colonnes. Notez que lorsque vous utilisez la construction MARGIN = c (1,2), elle s'applique à la fois aux lignes et aux colonnes.
+
+FUN pourrait etre toute fonction definee.
+
+
+
+``` {r echo=F, warning =F}
+apply_funcs <- tribble(~operateur, ~description,
+                "apply()", "tableaux, matrices", 
+                "sapply()", "dataframes, listes ou vecteurs. la sortie est une vecteur.", 
+                "lapply()", "listes",
+                )
+
+source("R/functions.R")
+
+clean_table(apply_funcs, 200)
+```
+

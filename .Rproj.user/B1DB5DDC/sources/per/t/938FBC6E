@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1616146304256.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "938FBC6E",
+    "lastKnownWriteTime" : 8819571385324300641,
+    "last_content_update" : 1616146304256,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "F534F4",
+        "caption" : "msna2020",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=msna2020&cache_key=F534F4",
+        "displayedObservations" : "5956",
+        "environment" : "",
+        "object" : "msna2020",
+        "preview" : "0",
+        "totalObservations" : "5956",
+        "variables" : "453"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

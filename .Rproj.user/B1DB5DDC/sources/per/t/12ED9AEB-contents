@@ -1,0 +1,172 @@
+---
+title: "tidyverse"
+output: html_document 
+css: "style.css"
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Mettez les packages que on va utiliser:
+Les packages sont installees avec la fonction install.packages("dplyr")
+```{r, echo=TRUE, warning=FALSE, error=FALSE, message=FALSE}
+library(dplyr)
+library(readxl)
+```
+
+### Importer donnees excel
+On va commencer et importer données menage MSNA 2020
+- avec fichiers xlsx c'est necessaire specifier le feuille
+
+```{r, echo=TRUE, warning=FALSE, error=FALSE, message=FALSE}
+
+msna2020 <- read_xlsx("donnees/REACH_BFA_dataset_2002_MSNA_2020_Septembre2020-1.xlsx", sheet="Données Ménages Nettoyées")
+```
+
+## dplyr
+dplyr is a grammar (package) of data manipulation, providing a consistent set of verbs (functions) that help you solve the most common data manipulation challenges. It forms part of the Tidyverse group of libraries for R.
+
+Important dplyr Functions
+
+
+``` {r echo=F, warning =F}
+dplyr_funcs <- tribble(~operateur, ~description,
+                "select()", "selectionner colonnes",
+                "filter()","filter avec conditionnes",
+                "arrange()", "sorter colonnes",
+                "mutate()", "creer nouvelles variables",
+                "group_by()","grouper lignes",
+                "summarize()", "faire une sommaire des groupes")
+
+source("functions.R")
+
+clean_table(dplyr_funcs, 200)
+```
+
+### Filter
+filter sélectionne des lignes d’une table selon une condition. On lui passe en paramètre un test, et seules les lignes pour lesquelles ce test renvoie TRUE (vrai) sont conservées.
+
+resultat suivant dans la console 
+```{r, echo=TRUE, eval=FALSE}
+filter(msna2020, admin1 == "est")
+```
+
+ou avec deux conditions
+```{r, echo=TRUE, eval=FALSE}
+
+filter(msna2020, admin1 == "est" && admin1 == "sahel")
+```
+on peut aussi creer un nouveau dataframe utilisant ce filter
+```{r, echo=TRUE}
+msna2020_est <- msna2020 %>% 
+  filter(admin1 == "est")
+```
+
+#### Select
+permet de sélectionner des colonnes d’un tableau de données.
+```{r, echo=TRUE, eval=F}
+
+select(msna2020, admin1, admin2)
+```
+
+le syntaxe colonne1:colonne2 permet de selectionner toutes les colonnes situees entre colonne1 et colonne2 incluses
+```{r, echo=TRUE, eval=F}
+
+select(msna2020, admin1:group_pop)
+```
+
+aussi on peut utiliser fonctions pour selectionner colonnes qui respecter certaines regles colonnes qui commencent avec
+```{r, echo=TRUE, eval=F}
+
+select(msna2020, starts_with("risque_garcon"))
+
+# colonnes qui contiennent
+select(msna2020, contains("total"))
+```
+
+### Rename
+Une variant de select est rename. Ca permet de renommer de colonnes et memetemps passer une selection.
+```{r, echo=TRUE}
+select(msna2020, region = admin1)
+```
+Si les noms de colonnes comportent des espaces ou des caractères spéciaux, on peut les entourer de guillemets (") ou de quotes inverses (`)
+```{r, echo=TRUE , eval=F}
+rename(msna2020, `région` = admin1)
+```
+
+### Arrange
+arrange reordonne les lignes dun tableau selon une ou plusieurs colonnes
+```{r, echo=TRUE, eval=F}
+arrange(msna2020, admin1)
+```
+
+ici premier admin1 et suivant admin2 et admin3
+```{r, echo=TRUE, eval=F}
+arrange(msna2020, admin1, admin2, admin3)
+```
+
+et si on veut trier une colonne par ordre decroissant on utilise la fonction desc()
+```{r, echo=TRUE, eval=F}
+
+arrange(msna2020, desc(admin1))
+```
+
+### Mutate
+- 'mutate' permet de creer de nouvelles colonnes dans le tableau de donnees a partir de variables existantes
+- mutate est efvidemment compatible avec les fonctions de recodage (ie. case_when)
+par example 
+```{r, echo=TRUE, warning=F}
+
+class(msna2020$age_chef_menage)
+msna2020 <- mutate(msna2020, age_chef_menage = as.numeric(as.character(age_chef_menage)))
+msna2020 <- mutate(msna2020, chef_m_agee = case_when(genre_chef_menage == "homme" & age_chef_menage > 60 ~ "oui", TRUE ~ "non"))
+```
+
+##LE PIPE
+- Quand on manipule un tableau de données, il est très fréquent d’enchaîner plusieurs opérations.
+- ici il faut que preserver lordre des operations dans un maniere lisible aussi
+
+une maniere de faire plusiers operations est creer un objet temporaire (ici 'est')
+```{r, echo=TRUE}
+
+est <- filter(msna2020, admin1 == 'est')
+est <- select(est, admin1:chef_menage)
+arrange(est, admin2)
+```
+
+la maniere mieux que on va utiliser cest l'operateur pipe %>% . On peut mettre avec le hotkey ctrl + shift + M
+- Ca passe le code de avant comme un argument de cette nouvelle ligne. Est tres lisable et preserver l'ordre du code.
+```{r, echo=TRUE}
+msna2020 %>% 
+  filter(admin1 == 'est') %>% 
+  select(admin1:chef_menage) %>% 
+  arrange(admin2)
+```
+
+##OPERATIONS GROUPEES
+###GROUP BY
+group by permet de définir des groupes de lignes à partir des valeurs d’une ou plusieurs colonnes.
+```{r, echo=TRUE, eval=FALSE}
+
+msna2020 %>% group_by(admin1) %>% slice(1)
+```
+
+- les opérations appliquées lors du calcul des valeurs des nouvelles colonnes sont appliquées groupe de lignes par groupe de lignes. 
+
+### Group by et Summarize ensemble
+- normalment "group by" est utilisee ensemble avec "summarize" pour creer un tableau de donnees avec seulement une ligne par groupe
+**le na.rm indique que la calcalution va eviter les donnees NA dans la calculation**
+```{r, echo=TRUE}
+
+msna2020 %>% 
+  group_by(admin1) %>% 
+  summarise(moy_total_ado = mean(total_13_17_hommes + total_13_17_femmes, na.rm=TRUE))
+```
+
+
+###Exercise
+
+1. Ulisant les donnees de MSNA 2020, creez deux nouvelles variables à la fois avec group by et summarize
+

@@ -1,0 +1,2 @@
+"0","data <- read.csv(""input/donnees/bfa2002_msna_jour35_nettoyage_2020.csv"", na.strings = c(""NA"", """", ""N/A""), stringsAsFactors = F) %>% "
+"0","  filter(group_pop == ""pop_local"")"

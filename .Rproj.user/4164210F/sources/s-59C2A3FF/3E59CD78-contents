@@ -1,0 +1,183 @@
+## 5. Graphiques
+### 5- Graphiques avec R
+
+***
+
+#### Liens clés
+
+[R Graph Gallery -    Plus information et autres packages graphiques](https://www.r-graph-gallery.com/) <br>
+
+[Cheat Sheet de ggplot2](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf) <br>
+
+[Documentation Plotly](https://plotly.com/r/) <br>
+
+[Documentation Highcharter](https://jkunst.com/highcharter/index.html) <br>
+
+***
+
+#### Packages des graphiques
+
+Installez et importez les packages pour ce module
+```{r include=F}
+library(dplyr)
+library(ggplot2)
+library(plotly)
+library(highcharter)
+
+
+```
+
+```{r eval=F, echo=T, warning=FALSE, error=FALSE, message=FALSE}
+library(dplyr)
+library(ggplot2)
+library(plotly)
+library(highcharter)
+
+```
+
+
+***
+
+
+Durant cet exercise on va utiliser Base R et les packages ggplot2, plotly et highcharter.
+
+#### ggplot2
+
+ggplot2 est un système de création déclarative de graphiques. Normalment on utilise la fonction ggplot2() avec une declaration pour les donnees, pour la cartographie esthétique (aes()) et apres on define le type de graphique.
+
+#### Highcharter et Plotly
+Ces deux packages facilitent la construction de graphiques de manière plus interactive. 
+
+#### Importez les donnees HSM autre fois
+
+```{r echo=TRUE}
+hsm_df <- read.csv("donnees/tableaux/REG1903b_3_Frontiers_HSM_Burkina_Faso_2021-03-16.csv", 
+                   na.strings = c("NA", "", "N/A", "N.A.", "NnA"),
+                   encoding = "UTF-8")
+```
+
+
+#### Histogram 
+Regroupe les nombres en plages. Graphique le plus couramment utilisé pour montrer les distributions de fréquences.
+
+Avec Base R -- hist() :
+```{r echo=TRUE}
+# age des personnes IC dans la region de l'Est. Les bins defaut sont de 5.
+hist(hsm_df$ic_age[hsm_df$admin1 == "Est"], main = "Age des IC en region Est")
+```
+
+Avec ggplot2 -- geom_histogram() :
+```{r echo=TRUE}
+# age des personnes IC dans la region de l'Est. Les bins sont de 5.
+ggplot(hsm_df, aes(x=ic_age)) + 
+  geom_histogram()
+```
+
+Et Highcharter:
+```{r echo=TRUE}
+# age des personnes IC dans la region de l'Est. Les bins sont de 5.
+hchart(hsm_df$profession_ic[hsm_df$admin1 == "Est"], name = "IC Age - Region Est") 
+```
+
+
+#### Graphique Barres 
+Les graphiques à barres sont utilisés pour comparer des éléments entre différents groupes ou pour suivre les changements au fil du temps.
+
+Avec Base R -- fonction barplot() : 
+```{r echo=TRUE}
+# faire le group by et summarize avec la region
+
+hsm_ic_age_admin1 <- hsm_df %>% 
+  group_by(admin1) %>% 
+  summarize(moy_ic_age = mean(ic_age))
+
+barplot(height=hsm_ic_age_admin1$moy_ic_age, names=hsm_ic_age_admin1$admin1, 
+        col=rgb(0.8,0.1,0.1,0.6),
+        xlab="Region", 
+        ylab="Age", 
+        main="Moyenne age par region", 
+        ylim=c(0,60)
+        )
+```
+
+Avec ggplot2 -- geom_bar() :
+```{r echo=TRUE}
+
+ggplot(hsm_ic_age_admin1, aes(x=admin1, y=moy_ic_age)) + 
+  geom_bar(stat = "identity")
+```
+
+Horizontal avec ggplot2 - ajoutez coord_flip() :
+```{r echo=TRUE}
+
+ggplot(hsm_ic_age_admin1, aes(x=admin1, y=moy_ic_age)) + 
+  geom_bar(stat = "identity") +
+  coord_flip()
+```
+#### Graphique barres empilées
+
+Avec Plotly -- plot_ly() + layout() :
+```{r eval=TRUE, echo=FALSE, results='asis', warning=FALSE, message=FALSE, error=FALSE}
+
+hsm_admin1_homme <- hsm_df %>%
+  filter(ic_genre == "Homme") %>% 
+  group_by(admin1) %>% 
+  summarize(n_homme = n())
+
+hsm_admin1_femme <- hsm_df %>%
+  filter(ic_genre == "Femme") %>% 
+  group_by(admin1) %>% 
+  summarize(n_femme = n())
+
+hsm_admin1_ic_genre <- left_join(hsm_admin1_homme, hsm_admin1_femme, by = "admin1")
+
+fig <- plot_ly(hsm_admin1_ic_genre, x = ~admin1, y = ~n_homme, type = 'bar', name = 'Homme')
+fig <- fig %>% add_trace(y = ~n_femme, name = 'Femme')
+fig <- fig %>% layout(yaxis = list(title = 'n'), barmode = 'stack')
+
+fig
+```
+
+
+#### Graphique Line
+les graphiques en courbes peuvent être utilisés pour montrer un changement au fil du temps.
+
+Avec ggplot2 -- geom_line() :
+```{r echo=TRUE}
+# faire le group by et summarize avec la date
+hsm_df_date <- hsm_df %>% 
+  group_by(today, statut_deplacement) %>% 
+  summarize(n = n())
+
+ggplot(hsm_df_date, aes(x=today, y=n, group=statut_deplacement, color=statut_deplacement)) +
+    geom_line()+
+    theme(legend.position="bottom")
+```
+
+Avec highcharter:
+```{r eval=TRUE, echo=FALSE, results='asis', warning=FALSE, message=FALSE, error=FALSE}
+
+graph_temps <-  hchart(hsm_df_date, 
+                       "line", 
+                       hcaes(x = today, y = n, group = statut_deplacement),
+                       color = c("#D1D3D4", "#f5a6a7","#58585A"))
+
+graph_temps
+```
+
+
+#### Diagramme Donut
+
+Avec Plotly -- plot_ly() + layout() :
+```{r eval=TRUE, echo=FALSE, results='asis', warning=FALSE, message=FALSE, error=FALSE}
+
+hsm_df_profession <- hsm_df %>% 
+  group_by(profession_ic) %>% 
+  summarize(n = n())
+
+fig <- plot_ly(hsm_df_profession, labels = ~profession_ic, values = ~n)
+fig <- fig %>% add_pie(hole = 0.6)
+fig <- fig %>% layout(title = 'Profession des IC')
+
+fig
+```

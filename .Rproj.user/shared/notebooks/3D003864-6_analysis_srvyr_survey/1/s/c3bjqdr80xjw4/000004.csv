@@ -1,0 +1,1726 @@
+"0","results <- from_analysisplan_map_to_output(assessment_data, "
+"0","                                          analysisplan = analysisplan,"
+"0","                                          weighting = weights,"
+"0","                                          questionnaire = questionnaire, "
+"0","                                          confidence_level = 0.9)"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'modalite'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre_est"
+"1","
+
+"
+"1","[34m----   1%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'modalite'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'sahel"
+"1","
+
+"
+"1","[34m----   2%
+
+[39m"
+"2","`group_by_()` is deprecated as of dplyr 0.7.0.
+Please use `group_by()` instead.
+See vignette('programming') for more help
+[90mThis warning is displayed once every 8 hours.[39m
+[90mCall `lifecycle::last_warnings()` to see where this warning was generated.[39m"
+"2","The `add` argument of `group_by()` is deprecated as of dplyr 1.0.0.
+Please use the `.add` argument instead.
+[90mThis warning is displayed once every 8 hours.[39m
+[90mCall `lifecycle::last_warnings()` to see where this warning was generated.[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'modalite'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre_nord"
+"1","
+
+"
+"1","[34m----   3%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'modalite'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre_ouest"
+"1","
+
+"
+"1","[34m----   5%
+
+[39m"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'modalite'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'nord"
+"1","
+
+"
+"1","[34m----   6%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'modalite'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'boucle_du_mouhoun"
+"1","
+
+"
+"1","[34m----   7%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'modalite'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'hauts_bassins"
+"1","
+
+"
+"1","[34m----   8%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'modalite'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'est"
+"1","
+
+"
+"1","[34m----   10%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'modalite'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'cascades"
+"1","
+
+"
+"1","[34m----   11%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'modalite'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'plateau_central"
+"1","
+
+"
+"1","[34m----   12%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'modalite'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre_sud"
+"1","
+
+"
+"1","[34m----   14%
+
+[39m"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'modalite'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'sud_ouest"
+"1","
+
+"
+"1","[34m----   15%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'modalite'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre"
+"1","
+
+"
+"1","[34m----   16%
+
+[39m"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'sexe_enqueteur'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre_est"
+"1","
+
+"
+"1","[34m----   17%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'sexe_enqueteur'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'sahel"
+"1","
+
+"
+"1","[34m----   19%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'sexe_enqueteur'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre_nord"
+"1","
+
+"
+"1","[34m----   20%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'sexe_enqueteur'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre_ouest"
+"1","
+
+"
+"1","[34m----   21%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'sexe_enqueteur'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'nord"
+"1","
+
+"
+"1","[34m----   23%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'sexe_enqueteur'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'boucle_du_mouhoun"
+"1","
+
+"
+"1","[34m----   24%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'sexe_enqueteur'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'hauts_bassins"
+"1","
+
+"
+"1","[34m----   25%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'sexe_enqueteur'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'est"
+"1","
+
+"
+"1","[34m----   26%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'sexe_enqueteur'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'cascades"
+"1","
+
+"
+"1","[34m----   28%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'sexe_enqueteur'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'plateau_central"
+"1","
+
+"
+"1","[34m----   29%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'sexe_enqueteur'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre_sud"
+"1","
+
+"
+"1","[34m----   30%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'sexe_enqueteur'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'sud_ouest"
+"1","
+
+"
+"1","[34m----   32%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'sexe_enqueteur'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre"
+"1","
+
+"
+"1","[34m----   33%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'ic_genre'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre_est"
+"1","
+
+"
+"1","[34m----   34%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'ic_genre'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'sahel"
+"1","
+
+"
+"1","[34m----   35%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'ic_genre'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre_nord"
+"1","
+
+"
+"1","[34m----   37%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'ic_genre'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre_ouest"
+"1","
+
+"
+"1","[34m----   38%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'ic_genre'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'nord"
+"1","
+
+"
+"1","[34m----   39%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'ic_genre'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'boucle_du_mouhoun"
+"1","
+
+"
+"1","[34m----   41%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'ic_genre'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'hauts_bassins"
+"1","
+
+"
+"1","[34m----   42%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'ic_genre'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'est"
+"1","
+
+"
+"1","[34m----   43%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'ic_genre'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'cascades"
+"1","
+
+"
+"1","[34m----   44%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'ic_genre'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'plateau_central"
+"1","
+
+"
+"1","[34m----   46%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'ic_genre'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre_sud"
+"1","
+
+"
+"1","[34m----   47%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'ic_genre'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'sud_ouest"
+"1","
+
+"
+"1","[34m----   48%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'ic_genre'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre"
+"1","
+
+"
+"1","[34m----   50%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'chef_menage'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre_est"
+"1","
+
+"
+"1","[34m----   51%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'chef_menage'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'sahel"
+"1","
+
+"
+"1","[34m----   52%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'chef_menage'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre_nord"
+"1","
+
+"
+"1","[34m----   53%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'chef_menage'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre_ouest"
+"1","
+
+"
+"1","[34m----   55%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'chef_menage'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'nord"
+"1","
+
+"
+"1","[34m----   56%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'chef_menage'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'boucle_du_mouhoun"
+"1","
+
+"
+"1","[34m----   57%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'chef_menage'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'hauts_bassins"
+"1","
+
+"
+"1","[34m----   58%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'chef_menage'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'est"
+"1","
+
+"
+"1","[34m----   60%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'chef_menage'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'cascades"
+"1","
+
+"
+"1","[34m----   61%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'chef_menage'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'plateau_central"
+"1","
+
+"
+"1","[34m----   62%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'chef_menage'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre_sud"
+"1","
+
+"
+"1","[34m----   64%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'chef_menage'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'sud_ouest"
+"1","
+
+"
+"1","[34m----   65%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'chef_menage'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre"
+"1","
+
+"
+"1","[34m----   66%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'genre_chef_menage'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre_est"
+"1","
+
+"
+"1","[34m----   67%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'genre_chef_menage'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'sahel"
+"1","
+
+"
+"1","[34m----   69%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'genre_chef_menage'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre_nord"
+"1","
+
+"
+"1","[34m----   70%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'genre_chef_menage'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre_ouest"
+"1","
+
+"
+"1","[34m----   71%
+
+[39m"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'genre_chef_menage'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'nord"
+"1","
+
+"
+"1","[34m----   73%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'genre_chef_menage'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'boucle_du_mouhoun"
+"1","
+
+"
+"1","[34m----   74%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'genre_chef_menage'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'hauts_bassins"
+"1","
+
+"
+"1","[34m----   75%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'genre_chef_menage'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'est"
+"1","
+
+"
+"1","[34m----   76%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'genre_chef_menage'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'cascades"
+"1","
+
+"
+"1","[34m----   78%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'genre_chef_menage'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'plateau_central"
+"1","
+
+"
+"1","[34m----   79%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'genre_chef_menage'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre_sud"
+"1","
+
+"
+"1","[34m----   80%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'genre_chef_menage'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'sud_ouest"
+"1","
+
+"
+"1","[34m----   82%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'genre_chef_menage'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre"
+"1","
+
+"
+"1","[34m----   83%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'situation_matrimoniale'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre_est"
+"1","
+
+"
+"1","[34m----   84%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'situation_matrimoniale'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'sahel"
+"1","
+
+"
+"1","[34m----   85%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'situation_matrimoniale'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre_nord"
+"1","
+
+"
+"1","[34m----   87%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'situation_matrimoniale'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre_ouest"
+"1","
+
+"
+"1","[34m----   88%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'situation_matrimoniale'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'nord"
+"1","
+
+"
+"1","[34m----   89%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'situation_matrimoniale'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'boucle_du_mouhoun"
+"1","
+
+"
+"1","[34m----   91%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'situation_matrimoniale'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'hauts_bassins"
+"1","
+
+"
+"1","[34m----   92%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'situation_matrimoniale'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'est"
+"1","
+
+"
+"1","[34m----   93%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'situation_matrimoniale'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'cascades"
+"1","
+
+"
+"1","[34m----   94%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'situation_matrimoniale'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'plateau_central"
+"1","
+
+"
+"1","[34m----   96%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'situation_matrimoniale'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre_sud"
+"1","
+
+"
+"1","[34m----   97%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'situation_matrimoniale'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'sud_ouest"
+"1","
+
+"
+"1","[34m----   98%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"
+"1",""
+"1","calculating summary statistics and hypothesis tests"
+"1","
+"
+"1","indicator.group...sector = 'NA'
+research.question = 'NA'
+sub.research.question = 'NA'
+repeat.var = 'admin1'
+independent.var = 'group_pop'
+independent.var.type = 'categorical'
+dependent.var = 'situation_matrimoniale'
+dependent.var.type = 'categorical'
+hypothesis.type = 'direct_reporting'
+hypothesis = 'NA'
+repeat.var.value = 'centre"
+"1","
+
+"
+"1","[34m----   100%
+
+[39m"
+"2","row names were found from a short variable and have been discarded"

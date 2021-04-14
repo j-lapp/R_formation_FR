@@ -1,0 +1,3 @@
+"0","design_srvyr %>%"
+"0","  group_by(admin1, ic_genre) %>%"
+"0","  summarise(mean  = survey_mean(vartype = ""ci""))"

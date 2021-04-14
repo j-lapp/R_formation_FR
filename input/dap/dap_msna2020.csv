@@ -1,0 +1,7 @@
+﻿Indicator Group / Sector,research.question,sub.research.question,repeat.for.variable,independent.variable,independent.variable.type,dependent.variable,dependent.variable.type,hypothesis.type,hypothesis
+NA,NA,NA,admin1,group_pop,categorical,modalite,categorical,direct_reporting,NA
+NA,NA,NA,admin1,group_pop,categorical,sexe_enqueteur,categorical,direct_reporting,NA
+NA,NA,NA,admin1,group_pop,categorical,ic_genre,categorical,direct_reporting,NA
+NA,NA,NA,admin1,group_pop,categorical,chef_menage,categorical,direct_reporting,NA
+NA,NA,NA,admin1,group_pop,categorical,genre_chef_menage,categorical,direct_reporting,NA
+NA,NA,NA,admin1,group_pop,categorical,situation_matrimoniale,categorical,direct_reporting,NA

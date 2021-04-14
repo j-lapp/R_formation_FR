@@ -1,0 +1,4 @@
+"0","design_srvyr %>%"
+"0","  group_by(admin1) %>% "
+"0","  summarise(mean  = survey_mean(ic_age, na.rm = TRUE, vartype = ""ci""),"
+"0","            count = unweighted(sum(!is.na(ic_age))))"

@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1615990716195.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "21E23F75",
+    "lastKnownWriteTime" : 8242270593397972000,
+    "last_content_update" : 1615990716195,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "id" : "174023be609a431488539e99412fd5ba",
+        "name" : "modes",
+        "title" : "modes"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "object_explorer"
+}

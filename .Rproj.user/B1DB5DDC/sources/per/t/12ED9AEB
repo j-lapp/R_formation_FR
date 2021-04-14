@@ -1,0 +1,24 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1615915999075.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1042056072",
+    "id" : "12ED9AEB",
+    "lastKnownWriteTime" : 1616088459,
+    "last_content_update" : 1616141801590,
+    "path" : "C:/Users/jarod/Desktop/R/base_R _training_FR/2_tidy.Rmd",
+    "project_path" : "2_tidy.Rmd",
+    "properties" : {
+        "chunk_output_type" : "inline",
+        "cursorPosition" : "172,0",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
