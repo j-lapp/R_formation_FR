@@ -149,13 +149,13 @@ Nous ajoutons des widgets de la même manière que nous avons ajouté d'autres t
 
 Les arguments restants varient d'un widget à l'autre, en fonction de ce dont le widget a besoin pour faire son travail. Ils incluent des éléments tels que les valeurs initiales, les plages et les incréments. Vous pouvez trouver les arguments exacts nécessaires à un widget sur la page d'aide de la fonction de widget, comme **?SelectInput**.
 
-Ici on va mettre 4 widgets dans un fluidRow. **fluidRow** indique que va adapter a le largeur du navigateur.
+Voici des exemples des types de widgets arrangés comme **fluidRow** dans un fluidPage. indique que va adapter a le largeur du navigateur. Dans chaque fluidRow on define des colonnes - le premier argument est la **largeur de la colonne.**
 ```{r eval=F, echo=T}
 # Definez UI ----
 ui <- fluidPage(
   titlePanel("Application Shiny"),
   fluidRow(
-    column(3, 
+    column(6, 
            sliderInput("slider1", h3("input curseur"),
                        min = 0, max = 100, value = 50),
            sliderInput("slider2", "",
@@ -167,7 +167,7 @@ ui <- fluidPage(
   
   ),
   fluidRow(
-    column(3, 
+    column(6, 
            checkboxGroupInput("checkGroup", 
                               h3("Case à cocher multiple"), 
                               choices = list("choix 1" = 1, 
@@ -178,7 +178,7 @@ ui <- fluidPage(
            fileInput("file", h3("Télécharger un fichier"))),
   ),
   fluidRow(
-    column(3,
+    column(6,
            radioButtons("radio", h3("Boutons radio"),
                         choices = list("Choice 1" = 1, "Choice 2" = 2,
                                        "Choice 3" = 3),selected = 1)),
@@ -199,6 +199,169 @@ shinyApp(ui, server)
 
 ***
 
+### Afficher les outputs réactives
+
+#### Regles pour outputs réactives
+* utilisez une fonction **Output** dans **l'interface utilisateur** pour placer des objets réactifs dans votre application Shiny.
+* utilisez une fonction **render** sur **le serveur** pour indiquer à Shiny comment construire vos objets.
+* entourer les expressions R par des accolades, {}, dans chaque fonction render.
+* enregistrez vos expressions de "render" dans la liste de sortie, avec une entrée pour chaque objet réactif de votre application.
+* créer de la réactivité en incluant une valeur d'entrée dans une expression de "render".
+
+
+Types des outputs:
+```{r echo=FALSE, warning=F}
+outputs <- tribble(~fonction_render, ~fonction_output, ~crée,
+                "renderDataTable","dataTableOutput", "DataTable",
+                "renderImage","imageOutput","images (enregistrées sous forme de lien vers un fichier source)",
+                "renderPlot","plotOutput",  "Graphiques Base R",
+                "renderTable","tableOutput",  "Tableaux",
+                "renderText","TextOutput",  "Texte",
+                "renderUI","uiOutput", "un objet de balise Shiny ou HTML",
+                "renderLeaflet","leafletOutput",  "carte Leaflet",
+                "renderPlotly","plotlyOutput", "graphiques de package Plotly",
+                "recerHighchart","highchartOutput",  "graphiques de package Highcharter",
+                )
+
+source("R/functions.R")
+
+clean_table(outputs, 300)
+```
+
+
+***
+Example de un output réactive
+```{r eval=F, echo=T}
+ui <- fluidPage(
+  titlePanel("Groupe de population"),
+  
+  sidebarLayout(
+    sidebarPanel(
+      helpText("Create Population group data"),
+      
+      selectInput("var", 
+                  label = "Choisissez un groupe de population",
+                  choices = c("PDI", 
+                              "Communauté hôte", 
+                              "Refugie"),
+                  selected = "Communauté hôte"),
+      
+      sliderInput("range", 
+                  label = "Gamme d'intérêt:",
+                  min = 0, max = 100, value = c(0, 100))
+    ),
+    
+    mainPanel(
+      textOutput("selected_var"),
+      textOutput("min_max")
+    )
+  )
+)
+
+server <- function(input, output) {
+  
+  output$selected_var <- renderText({ 
+    paste("Vous avez sélectionné", input$var)
+  })
+  
+  output$min_max <- renderText({ 
+    paste("Vous avez choisi une gamme allant de",
+          input$range[1], "à", input$range[2])
+  })
+  
+}
+
+shinyApp(ui, server)
+```
+**Resultats:**
+![](www/shiny2.png)
+
+*** 
+
+```{r eval=F, echo=T}
+
+library(shiny)
+library(plotly)
+library(dplyr)
+library(ggplot2)
+
+# global - manipulation des donnees
+# lisez les donnees HSM
+data <- read.csv("donnees/tableaux/REG1903b_3_Frontiers_HSM_Burkina_Faso_2021-03-16.csv",
+                 stringsAsFactors = F,
+                 na.strings = c("NA", "N/A",""),
+                 encoding="UTF-8")
+
+data$type_evaluation_cort <- case_when(data$type_evaluation == "J'évalue la localité à distance avec un informateur-clé EN PERSONNE" ~ "distance_personne",
+                                  data$type_evaluation == "J'évalue la localité à distance avec un informateur-clé PAR TÉLÉPHONE" ~ "dist_telephone",
+                                  data$type_evaluation == "Visites terrains - Je suis dans la localité évaluée avec l'informateur-clé" ~ "ic")
+
+# objet UI
+ui <- bootstrapPage(
+        navbarPage("Exercise navbar page",
+                 tabPanel("tab 1 - type_enquete",
+                          sidebarLayout(
+                            sidebarPanel(
+                                    selectInput("region",
+                                                "selectionnez base:",
+                                                choices = sort(unique(data$base)))
+                            ),
+                            mainPanel(
+                              plotOutput(outputId = "graphique_stacked", height = "400px", width = "450px"),
+                            )
+                          )),
+                 tabPanel("tab 2 - nourriture maintenant",
+                          sidebarLayout(
+                            sidebarPanel(
+                              selectInput("region2",
+                                          "selectionnez base:",
+                                          choices = sort(unique(data$base)))
+                            ),
+                            mainPanel(
+                              plotOutput(outputId = "graphique_stacked2", height = "400px", width = "450px"),
+                            )
+                          ))
+)
+)
+# fonction de server 
+server <- function(input, output, session) {
+  
+  output$graphique_stacked <- renderPlot({
+    
+    region <- input$region
+    
+    data_filtree <- data %>% 
+      filter(base == region)
+    
+    ggplot(data_filtree) + 
+      geom_bar(aes(x = global_enum_id, fill = type_evaluation_cort))+ 
+      theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  })
+  
+  output$graphique_stacked2 <- renderPlot({
+    
+    region2 <- input$region2
+    
+    data_filtree2 <- data %>% 
+      filter(base == region2)
+    
+    ggplot(data_filtree2) +
+      geom_bar(aes(x = admin2, fill = nourriture_maintenant))+
+      theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  })
+}
+
+# lancer l'application
+shinyApp(ui, server)
+
+
+```
+**Resultats:**
+![](www/shiny3.png)
+![](www/shiny4.png)
+
+
+***
 #### Exemples intégrés. 
 Le package Shiny est livré avec de nombreux exemples que nous pouvons consulter pour nous aider:
 
