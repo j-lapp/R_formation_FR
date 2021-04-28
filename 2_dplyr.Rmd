@@ -175,7 +175,7 @@ une maniere de faire plusiers operations est creer un objet temporaire (ici 'est
 ```{r, echo=TRUE, eval=F}
 
 hsm_df_est <- filter(hsm_df, admin1 == 'Est')
-hsm_df_est <- select(hsm_df_est, admin1:info_localite)
+hsm_df_est <- select(hsm_df_est, admin1:admin3)
 arrange(hsm_df_est, admin2)
 ```
 
@@ -184,7 +184,7 @@ la maniere mieux que on va utiliser cest l'operateur pipe %>% . On peut mettre a
 ```{r, echo=TRUE}
 hsm_df_est <- hsm_df %>% 
                     filter(admin1 == 'Est') %>% 
-                    select(admin1:info_localite) %>% 
+                    select(admin1:admin3) %>% 
                     arrange(admin2)
 ```
 

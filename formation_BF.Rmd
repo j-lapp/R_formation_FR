@@ -16,7 +16,7 @@ library(knitr)
 include_graphics("www/reach_logo.png") 
 ```
 
-[Lien Github - pour télécharger les documents associés](https://github.com/j-lapp/R_formation_FR) <br>
+[Lien Github - pour télécharger les documents associés](https://github.com/j-lapp/R_formation_FR){target="_blank"} <br>
 
 
 ```{r child = '1_baseR.Rmd'}
